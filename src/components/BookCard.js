@@ -15,7 +15,7 @@ const BookCard = (props) => {
   if (book.volumeInfo) {
     author = book.volumeInfo.authors !== undefined ? `Author: ${book.volumeInfo.authors[0]}` : 'Author unknown';
     title = book.volumeInfo.title !== undefined ? book.volumeInfo.title : 'Title not found';
-    thumbnail = book.volumeInfo.imageLinks.thumbnail !== undefined ? book.volumeInfo.imageLinks.thumbnail : "https://workboard.awign.com/no-image.jpg";
+    thumbnail = book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : "https://workboard.awign.com/no-image.jpg";
     linkUrl = book.volumeInfo.previewLink !== undefined ? book.volumeInfo.previewLink : "https://books.google.com/";
     description = book.volumeInfo.description !== undefined ? book.volumeInfo.description : 'No description found';
     price = book.saleInfo.saleability !== "NOT_FOR_SALE" ? `Price: $${book.saleInfo.listPrice.amount}` : null;

@@ -3,7 +3,6 @@ import React from 'react'
 const BookCard = (props) => {
 
   const { book } = props;
-  console.log(book);
 
   let author;
   let title;
@@ -18,7 +17,7 @@ const BookCard = (props) => {
     thumbnail = book.volumeInfo.imageLinks !== undefined ? book.volumeInfo.imageLinks.thumbnail : "https://workboard.awign.com/no-image.jpg";
     linkUrl = book.volumeInfo.previewLink !== undefined ? book.volumeInfo.previewLink : "https://books.google.com/";
     description = book.volumeInfo.description !== undefined ? book.volumeInfo.description : 'No description found';
-    price = book.saleInfo.saleability !== "NOT_FOR_SALE" ? `Price: $${book.saleInfo.listPrice.amount}` : null;
+    price = (book.saleInfo.saleability === "FOR_SALE" && book.saleInfo.saleability !== undefined) ? `Price: $${book.saleInfo.listPrice.amount}` : null;
   } else {
     author = null;
     title = null;

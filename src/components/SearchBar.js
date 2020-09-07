@@ -26,6 +26,7 @@ class SearchBar extends Component {
             name="search" 
             id="search"
             placeholder="Search for a subject"
+            required
             onChange={(e) => this.handleChange(e)}
           />
           <input 

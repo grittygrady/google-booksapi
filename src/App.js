@@ -50,13 +50,36 @@ class App extends Component {
 
   formatQuery = (baseUrl, searchTerm, key) => {
     // ADD FILTER OPTIONS HERE!!!!!
+    const { typeFilter, printFilter } = this.state;
     let formattedQuery;
     if(this.state.searchQuery !== '') {
       formattedQuery = '?q=' + searchTerm
     }
+    if(typeFilter !== '') {
+      formattedQuery = formattedQuery + '&filter=' + typeFilter;
+    }
+    if(printFilter !== '') {
+      formattedQuery = formattedQuery + '&printType=' + printFilter;
+    }
     const formattedUrl = baseUrl + formattedQuery + '&key' + key;
     console.log('Formatted URL:', formattedUrl);
     return formattedUrl;
+  }
+
+  handleBookType = (bookTypeEvent) => {
+    if(bookTypeEvent) {
+      this.setState({
+        typeFilter: bookTypeEvent
+      });
+    }
+  }
+
+  handlePrintType = (printTypeEvent) => {
+    if (printTypeEvent) {
+      this.setState({
+        printFilter: printTypeEvent
+      });
+    }
   }
 
   render() {
@@ -66,7 +89,10 @@ class App extends Component {
         <SearchBar 
           handleSearchSubmit={this.handleSearchSubmit}
         />
-        <Filter />
+        <Filter 
+          handlePrintType={this.handlePrintType}
+          handleBookType={this.handleBookType}
+        />
         <BookList searchResults={this.state.searchResults} />
       </div>
     );

@@ -48,6 +48,8 @@ class App extends Component {
       })
   }
 
+
+  
   formatQuery = (baseUrl, searchTerm, key) => {
     // ADD FILTER OPTIONS HERE!!!!!
     const { typeFilter, printFilter } = this.state;
